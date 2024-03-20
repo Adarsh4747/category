@@ -34,7 +34,7 @@ def askgpt(prompt):
     print(response)
     
     # print("******************",dat)
-    print("***********",dat[1])
+    # print("***********",dat[1])
     try:
         extracted_list = response.split('[')[-1].strip()
         # print("elist-----",extracted_list)
@@ -48,7 +48,7 @@ def askgpt(prompt):
 
 
     dat=ast.literal_eval(extracted_list)
-    print("********************", dat)
+    # print("********************", dat)
     # print(dat[0])
     # The rest of your code...
 
