@@ -25,22 +25,22 @@ def promptmaker(statement):
     return askgpt(prompt)
 
 def askgpt(prompt):
-    # print("etti")
+    print("etti")
     openai_api_key =os.environ.get('OPENAI_API_KEY')
     chat_model = ChatOpenAI(temperature=0, model='gpt-4', openai_api_key=openai_api_key,max_tokens=350)
     
     output = chat_model([HumanMessage(content=prompt)])
     response = output.content
-    # print(response)
+    print(response)
     
     # print("******************",dat)
-    # print("***********",dat[1])
+    print("***********",dat[1])
     try:
         extracted_list = response.split('[')[-1].strip()
         # print("elist-----",extracted_list)
         extracted_list = '[' +extracted_list
     
-        # print("elist-----",extracted_list)
+        print("elist-----",extracted_list)
     except ValueError:
         print("Invalid input string")
     
@@ -48,20 +48,20 @@ def askgpt(prompt):
 
 
     dat=ast.literal_eval(extracted_list)
-    # print("********************", dat)
+    print("********************", dat)
     # print(dat[0])
     # The rest of your code...
 
     now=dat[0]
     list_now = now.split('*')
-    # print("list_now is",list_now)
+    print("list_now is",list_now)
 
     past=dat[1]
     if '*' in past:
         list_past=past.split('*')
     else:
         list_past=past
-    # print("list_past is",list_past)
+    print("list_past is",list_past)
 
     past_med=dat[2]
     if '*' in past_med:
@@ -82,10 +82,10 @@ def askgpt(prompt):
         list_pre=precaution.split('*')
     else:
         list_pre=precaution
-    # print("list_instruct ",list_pre)
+    print("list_instruct ",list_pre)
 
     finding=dat[5]
-    # print("-------------------------------",finding)
+    print("-------------------------------",finding)
     if '*' in finding:
         list_find=finding.split('*')
     else:
@@ -101,7 +101,7 @@ def askgpt(prompt):
         'instructions': list_pre,
         'finding': list_find
     }
-    # print(result_dict)
+    print(result_dict)
     return(result_dict)
 
 
